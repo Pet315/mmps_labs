@@ -3,13 +3,13 @@ import matplotlib.pyplot as plt
 
 x_interp = [-3, -2, 1, 3]  # абсциси точок для інтерполювання
 y_interp = [-4, 19, -8, 14]  # ординати точок для інтерполювання
-n = 3  # тому що задано 4 точки для інтерполювання
+n = 3
 
 
 def lagrange_polynomial(x=sp.Symbol('x')):
     L_n_x = 0
     for i in range(n + 1):
-        x_interp_ex_i = []  # список, що міститиме всі абсциси точок для інтерполювання, окрім хі, що йде за циклом
+        x_interp_ex_i = []  # список, що міститиме абсциси всіх точок для інтерполювання, окрім хі, що йде за циклом
         for x_interp_el in x_interp:
             x_interp_ex_i.append(x_interp_el)
         x_interp_ex_i.pop(i)  # видалення хі
