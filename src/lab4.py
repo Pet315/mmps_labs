@@ -79,6 +79,35 @@ def main_params(n_desc=''):
     return l, m
 
 
+def select_type(type):
+    match type:
+        case 1:
+            try:
+                l, m = main_params()
+            except:
+                print('Вводьте тільки числа\n')
+                return
+            print(single_channel_with_rejections(l, m))
+        case 2:
+            try:
+                l, m, n = main_params('кількість каналів')
+            except:
+                print('Вводьте тільки числа\n')
+                return
+            print(multi_channel_with_rejections(l, m, n))
+        case 3:
+            try:
+                l, m, n = main_params('довжину черги')
+            except:
+                print('Вводьте тільки числа\n')
+                return
+            print(single_channel_with_expectations(l, m, n))
+        case 4:
+            return
+        case _:
+            print('Програма працює лише для трьох видів СМО')
+
+
 if __name__ == '__main__':
     process = 1
     while process == 1:
@@ -92,32 +121,9 @@ if __name__ == '__main__':
         except:
             print('Вводьте тільки числа\n')
             continue
-        match type:
-            case 1:
-                try:
-                    l, m = main_params()
-                except:
-                    print('Вводьте тільки числа\n')
-                    continue
-                print(single_channel_with_rejections(l, m))
-            case 2:
-                try:
-                    l, m, n = main_params('кількість каналів')
-                except:
-                    print('Вводьте тільки числа\n')
-                    continue
-                print(multi_channel_with_rejections(l, m, n))
-            case 3:
-                try:
-                    l, m, n = main_params('довжину черги')
-                except:
-                    print('Вводьте тільки числа\n')
-                    continue
-                print(single_channel_with_expectations(l, m, n))
-            case 4:
-                break
-            case _:
-                print('Програма працює лише для трьох видів СМО')
+        select_type(type)
+        if type == 4:
+            break
         try:
             process = int(input('\nВведіть 1 для продовження: '))
         except:
